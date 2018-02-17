@@ -12,7 +12,7 @@ var con = mysql.createConnection({
  //Connecting to the database
     con.connect(function(err) {
    if (err) throw err;
-console.log("Connected!");
+console.log("User - Connected!");
  });
  
  
