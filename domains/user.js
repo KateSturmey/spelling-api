@@ -15,8 +15,6 @@ var con = mysql.createConnection({
 console.log("Connected!");
  });
  
-var bcrypt = require('bcrypt')
-//var auth = require('../auth.js')
  
    exports.getAll = function(req, res) {
      var sql = "select * from user_details;"
