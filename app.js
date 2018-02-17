@@ -15,7 +15,7 @@ const auth = require('./auth.js')
 
 //Starts up the actual application server
 app.listen(process.env.PORT || 8080, function () {
-  console.log('Running app on port 8080!'); //this needs changing 
+  console.log('Running app on port 8080! This is working'); //this needs changing 
 });
 
 
