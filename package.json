@@ -1,6 +1,9 @@
 {
   "name": "kate",
   "version": "1.0.0",
+    "engines":{
+    "npm": "5.6.0"
+  },
   "description": "This is the spell-api for my dissertation",
   "main": "app.js",
   "scripts": {
