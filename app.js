@@ -21,6 +21,6 @@ app.listen(process.env.PORT || 8080, function () {
 //user Gets
 app.get('/user', user.getAll);
 //login
-//app.post('/auth/login', auth.login);
+app.post('/auth/login', auth.login);
 //auth
 app.get('/auth',auth.getUserDetails);
