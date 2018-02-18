@@ -2,24 +2,36 @@
  var mysql = require('mysql');
 
 //Creating a connection to the database
-var con = mysql.createConnection({
+var pool      =    mysql.createPool({
+   connectionLimit : 100, //important
    host: "den1.mysql4.gear.host",
    database: "spelling1",
    user: "spelling1",
-   password: "Orang3!"
+   password: "Orang3!",
+   debug    :  false
  });
 
- //Connecting to the database
-    con.connect(function(err) {
-   if (err) throw err;
-console.log("User - Connected!");
- });
  
- 
-   exports.getAll = function(req, res) {
-     var sql = "select * from user_details;"
-     con.query(sql, function(err, result){
-         if (err) { res.status(400).send(err) }
-           res.status(200).send(result)
-     })
- };
+ exports.getAll = function(req, res) {
+        pool.getConnection(function(err,connection){
+        if (err) {
+          res.json({"code" : 100, "status" : "Error in connection database"});
+          return;
+		  console.log("User - Connected!");
+        }   
+        console.log('connected as id ' + connection.threadId);
+        
+        
+		connection.query("select * from user_details",function(err,rows){
+            connection.release();
+            if(!err) {
+                res.json(rows);
+            }           
+        });
+
+        connection.on('error', function(err) {      
+              res.json({"code" : 100, "status" : "Error in connection database"});
+              return;     
+        });
+	});
+  }
