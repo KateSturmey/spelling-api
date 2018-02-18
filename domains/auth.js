@@ -34,7 +34,7 @@ var pool = mysql.createPool({
 	});
   }
  
-
+/* 
 
 exports.login = function(req,res){
 	pool.getConnection(function(err,connection){
@@ -43,7 +43,7 @@ exports.login = function(req,res){
           return;
 		  console.log("AUTH - Connected!");
         }   
-        console.log('connected as id ' + connection.threadId);
+        console.log('connected as id ' + connection.threadId); */
 	
 /* 	var password_hash = req.body.password_hash
     connection.query((
